@@ -1,0 +1,251 @@
+.container {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+#input-section {
+    flex: 1;
+    height: 480px;
+    padding: 20px;
+    margin-left: calc(-50vw + 52%);
+    background-color: #F0F0F0;
+    border-radius: 10px;
+    order: 1;
+}
+
+.input-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin: 0 auto;
+}
+
+.input-form label {
+    font-weight: bold;
+}
+
+#result {
+    flex: 1;
+    order: 2;
+}
+
+#result-table {
+    border: 2px solid;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#result-table th,
+#result-table td {
+    border-right: 1px solid;
+    padding: 8px;
+    text-align: center;
+    color: black;
+}
+
+#graph-section {
+    flex: 1;
+    border: 2px solid;
+    border-radius: 4px;
+    padding: 0px;
+    min-width: 500px;
+    height: 100%;
+    width: 100%;
+    max-height: 500px;
+    max-width: 500px;
+    cursor: pointer;
+    order: 3;
+}
+
+#graph {
+    width: 100%;
+    height: 100%;
+}
+
+#submit-button {
+    font-weight: bold;
+    padding: 12px;
+    background-color: #50C878;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#submit-button:hover {
+    background-color: #278E2A;
+}
+
+#error-message {
+    margin-top: 12px;
+    font-weight: bold;
+    text-align: center;
+    list-style: none;
+}
+
+.form-group {
+    margin: 0 0 10px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.enter-y {
+    padding: 10px;
+    border: 2px;
+    border-radius: 5px;
+    font-size: 14px;
+    width: 80%;
+}
+
+#welcome-link {
+    position: fixed;
+    bottom: 20px;
+    left: 30px;
+}
+
+#welcome-link .redirect-link {
+    cursor: pointer;
+    padding: 8px 20px;
+    background: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    margin-top: 10px;
+    border: 1px solid #0056b3;
+}
+
+#welcome-link .redirect-link:hover {
+    background-color: #0056b3;
+}
+
+#clear-button {
+    font-weight: bold;
+    padding: 12px;
+    background-color: #ff4757;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#clear-button:hover {
+    background-color: #d63031;
+}
+
+@media (max-width: 1031px) and (min-width: 860px) {
+    .container {
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+    
+    #input-section {
+        flex: 1;
+        min-width: 300px;
+        height: auto;
+        order: 1;
+        margin-left: 0;
+    }
+    
+    #result {
+        flex: 2;
+        min-width: 400px;
+        order: 3;
+    }
+    
+    #graph-section {
+        flex: 1;
+        min-width: 300px;
+        height: 400px;
+        max-width: 100%;
+        order: 2;
+    }
+    
+    #result-table {
+        min-width: 600px;
+    }
+    
+    .enter-y {
+        width: 100%;
+    }
+    
+    #submit-button,
+    #clear-button {
+        width: 100%;
+    }
+}
+
+@media (max-width: 859px) {
+    .container {
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px;
+    }
+    
+    #input-section {
+        flex: none;
+        width: 100%;
+        height: auto;
+        padding: 15px;
+        order: 1;
+        margin-left: 0;
+    }
+    
+    #result {
+        flex: none;
+        width: 100%;
+        order: 3;
+        overflow-x: auto;
+    }
+    
+    #result-table {
+        min-width: 500px;
+    }
+    
+    #graph-section {
+        flex: none;
+        width: 100%;
+        height: 300px;
+        min-width: auto;
+        max-width: 100%;
+        order: 2;
+    }
+    
+    .input-form {
+        gap: 15px;
+    }
+    
+    .enter-y {
+        width: 100%;
+    }
+    
+    #submit-button,
+    #clear-button {
+        width: 100%;
+        margin-top: 10px;
+    }
+}
+
+.MuiAutocomplete-root {
+    width: 100%;
+    border-radius: 5px;
+    background-color: white;
+}
+
+.autoComplete .MuiOutlinedInput-root {
+  padding: 0 !important;
+  border: 0px !important;
+}
+
+.autoComplete .MuiInputBase-input {
+  padding: 10px 12px !important;
+  height: 40px !important;
+}
