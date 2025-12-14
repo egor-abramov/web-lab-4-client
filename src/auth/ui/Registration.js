@@ -40,7 +40,7 @@ function Welcome() {
             });
             if (response.ok) {
                 window.location.href = '/login';
-            } else if (response.status === 403) {
+            } else if (response.status === 409) {
                 setErrors({
                     login: `User with login ${formData.login} alreadey exist`,
                     password: '',

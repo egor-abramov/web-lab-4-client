@@ -4,6 +4,7 @@ import Header from './widget/Header';
 import Calculator from './calculator/ui/Calculator';
 import Registration from './auth/ui/Registration';
 import Login from './auth/ui/Login';
+import Admin from './admin/ui/Admin'
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route path="/" element={<Calculator />} />
           <Route path='/login' element={<Login />} />
           <Route path='/registration' element={<Registration />}/>
+          <Route path='/admin' element={<Admin />}></Route>
         </Routes>
       </div>
     </Router>

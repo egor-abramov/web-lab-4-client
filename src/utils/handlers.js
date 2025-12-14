@@ -1,5 +1,7 @@
-import { scale, drawPoint, getCtx, getCanvas } from './canvas.js';
+import { scale, getCtx, getCanvas } from './canvas.js';
 import { apiFetch } from './api.js';
+import { logout } from '../auth/model/authSlice.js';
+import { store } from '../store/store.js';
 
 export async function handleSubmit(x, y, r, accessToken) {
     const ctx = getCtx();

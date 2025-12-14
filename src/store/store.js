@@ -4,16 +4,18 @@ import storage from 'redux-persist/lib/storage';
 
 import calculatorReducer from '../calculator/model/calculatorSlice';
 import authReducer from '../auth/model/authSlice';
+import adminReducer from '../admin/model/adminSlice';
 
 const config = {
     key: "root",
     storage,
-    whiteList: ['auth', 'calculator ']
+    whiteList: ['auth', 'calculator', 'admin']
 }
 
 const rootReducer = combineReducers({
     calculator: calculatorReducer,
     auth: authReducer,
+    admin: adminReducer
 });
 
 const persistedReducer = persistReducer(config, rootReducer);

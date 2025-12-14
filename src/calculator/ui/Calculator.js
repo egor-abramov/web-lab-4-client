@@ -12,7 +12,7 @@ import { setR, setX, addPoint, clearPoints, setPoints } from '../model/calculato
 import { apiFetch } from '../../utils/api.js'
 import { convertUTCToLocal } from '../../utils/calculator.js';
 import { getCtx } from "../../utils/canvas.js";
-import { setAccessToken } from "../../auth/model/authSlice.js";
+import { logout } from "../../auth/model/authSlice.js";
 
 function Calculator() {
     const dispatch = useDispatch();
@@ -107,7 +107,8 @@ function Calculator() {
     async function processQuit() {
         const result = await handleQuit(accessToken);
         if(result) {
-            dispatch(setAccessToken(''));
+            alert("LOGOUT NOW");
+            dispatch(logout());
         }
     }
 

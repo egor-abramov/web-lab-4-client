@@ -1,5 +1,5 @@
 import { store } from '../store/store.js';
-import { setAccessToken } from '../auth/model/authSlice.js';
+import { setCredentials } from '../auth/model/authSlice.js';
 
 const API_URL = "http://localhost:8080";
 
@@ -19,10 +19,7 @@ export async function apiFetch(url, method, accessToken, options = {}) {
         credentials: "include",
         headers
     });
-
-    if (response.ok) {
-        return response;
-    } else if (response.status === 401) {
+    if (response.status === 401) {
         throw new Error("Unauthorized");
     } else if(response.status === 403) {
         const refreshed = await refreshAccessToken();
@@ -30,7 +27,7 @@ export async function apiFetch(url, method, accessToken, options = {}) {
             return null;
         }
 
-        store.dispatch(setAccessToken(refreshed.accessToken));
+        store.dispatch(setCredentials(refreshed.accessToken));
         headers.Authorization = `Bearer ${refreshed.accessToken}`;
     
         const retryResponse = await fetch(API_URL + url, {
@@ -43,7 +40,7 @@ export async function apiFetch(url, method, accessToken, options = {}) {
             return retryResponse;
         }
     }
-    return null;
+    return response;
 }
 
 async function refreshAccessToken() {

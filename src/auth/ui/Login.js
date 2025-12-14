@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import './login.css'
-import { useDispatch } from 'react-redux';
-import { setAccessToken } from '../model/authSlice.js';
+import { useDispatch, useSelector } from 'react-redux';
+import { setCredentials } from '../model/authSlice.js';
+import { jwtDecode } from "jwt-decode";
 
 function Welcome() {
     const dispatch = useDispatch();
+    const user = useSelector(s => s.auth.user);
 
     const [formData, setFormData] = useState({
         login: '',
@@ -43,8 +45,13 @@ function Welcome() {
             });
             if (response.ok) {
                 const data = await response.json();
-                dispatch(setAccessToken(data.accessToken));
-                window.location.href = '/';
+                dispatch(setCredentials(data.accessToken));
+                const decoded = jwtDecode(data.accessToken);
+                if(decoded.role === "USER") {
+                    window.location.href = '/';
+                } else if (decoded.role === "ADMIN") {
+                    window.location.href = "/admin";
+                }
             } else {
                 const errorData = await response.json().catch(() => ({}));
                 

@@ -1,8 +1,7 @@
 export function convertUTCToLocal(utcTime) {
     try{
         const now = new Date();
-
-        const [hours, minutes, seconds] = utcTime.split(':').map(Number);
+        const [hours, minutes, seconds] = utcTime.split("T")[1].split(".")[0].split(':').map(Number);
         const utcDate = new Date(Date.UTC(
             now.getUTCFullYear(),
             now.getUTCMonth(),
