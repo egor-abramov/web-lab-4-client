@@ -32,7 +32,7 @@ function Admin() {
                 const result = await apiFetch("/admin", 'GET', accessToken);
                 if (result) {
                     const data = await result.json();
-                    dispatch(setUsersWinRate(data));
+                    dispatch(setUsersWinRate(data.statistic));
                 }
             } catch (err) {
                 window.location = "/login";
@@ -72,7 +72,7 @@ function Admin() {
         const result = await apiFetch(url, 'GET', accessToken);
         if (result) {
             const data = await result.json();
-            dispatch(setUsersWinRate(data));
+            dispatch(setUsersWinRate(data.statistic));
         }
     }
 
