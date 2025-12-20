@@ -6,7 +6,6 @@ import { jwtDecode } from "jwt-decode";
 
 function Welcome() {
     const dispatch = useDispatch();
-    const user = useSelector(s => s.auth.user);
 
     const [formData, setFormData] = useState({
         login: '',
@@ -53,12 +52,9 @@ function Welcome() {
                     window.location.href = "/admin";
                 }
             } else {
-                const errorData = await response.json().catch(() => ({}));
+                const json = await response.json().catch(() => ({}));
                 
-                setErrors({
-                    login: errorData.login || '',
-                    password: errorData.password || ''
-                });
+                setErrors(json.errors);
             } 
         } catch (err) {
             console.log(err);

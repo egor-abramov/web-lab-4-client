@@ -46,12 +46,9 @@ function Welcome() {
                     password: '',
                 });
             } else {
-                const errorData = await response.json().catch(() => ({}));
+                const json = await response.json().catch(() => ({}));
                 
-                setErrors({
-                    login: errorData.login || '',
-                    password: errorData.password || ''
-                });
+                setErrors(json.errors);
             }
         } catch(err) {
             console.log(err);

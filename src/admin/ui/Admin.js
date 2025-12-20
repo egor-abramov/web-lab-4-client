@@ -104,8 +104,13 @@ function Admin() {
             } else if(response.status === 409){
                 setModalError("User already exists");
             } else {
-                const errorData = await response.json();
-                setModalError(errorData.password);
+                const json = await response.json();
+                if(json.errors.login != '' && json.errors.login) {
+                    setModalError(json.errors.login);
+                } else if(json.errors.password != '' && json.errors.password) {
+                    console.log(json.errors);
+                    setModalError(json.errors.password);
+                }
             }
         } catch (err) {
             setModalError("Server error");
